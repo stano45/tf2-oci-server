@@ -11,4 +11,5 @@ args=(-game tf -port 27015 +ip 0.0.0.0 -norestart
   +maxplayers "${TF2_MAXPLAYERS:-24}" +map "${TF2_MAP:-ctf_2fort}")
 [ -n "${TF2_GSLT:-}" ] && args+=(+sv_setsteamaccount "$TF2_GSLT")
 
-exec "$bin" "${args[@]}"
+# Run under FEXBash: srcds_run_64 checks uname and on a native ARM shell picks an arm64 build.
+exec FEXBash -c "exec $(printf '%q ' "$bin" "${args[@]}")"
