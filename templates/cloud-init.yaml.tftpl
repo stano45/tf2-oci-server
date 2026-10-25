@@ -1,0 +1,30 @@
+#cloud-config
+write_files:
+  - path: /usr/local/sbin/tf2-setup
+    permissions: "0755"
+    content: |
+      ${indent(6, setup_sh)}
+  - path: /usr/local/bin/tf2-start
+    permissions: "0755"
+    content: |
+      ${indent(6, start_sh)}
+  - path: /usr/local/bin/tf2-update
+    permissions: "0755"
+    content: |
+      ${indent(6, update_sh)}
+  - path: /usr/local/sbin/tf2-auto-update
+    permissions: "0755"
+    content: |
+      ${indent(6, auto_update_sh)}
+  - path: /etc/systemd/system/tf2.service
+    content: |
+      ${indent(6, tf2_service)}
+  - path: /etc/systemd/system/tf2-update.service
+    content: |
+      ${indent(6, update_service)}
+  - path: /etc/systemd/system/tf2-update.timer
+    content: |
+      ${indent(6, update_timer)}
+
+runcmd:
+  - [/usr/local/sbin/tf2-setup]

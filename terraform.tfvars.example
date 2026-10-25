@@ -1,0 +1,13 @@
+# Copy to terraform.tfvars (gitignored) and fill in.
+
+tenancy_ocid = "ocid1.tenancy.oc1..aaaa..."
+# region     = "eu-frankfurt-1"   # defaults to the region in ~/.oci/config
+
+hostname    = "TF2 on Oracle ARM"
+start_map   = "ctf_2fort"
+max_players = 24
+# server_password = ""            # empty = public
+# admin_cidr      = "203.0.113.7/32"  # lock SSH/RCON to your IP
+
+# Steam Game Server Login Token, app ID 440: https://steamcommunity.com/dev/managegameservers
+# gslt = ""

@@ -1,0 +1,7 @@
+[Unit]
+Description=Update TF2 server files, restart on new build
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/tf2-auto-update

@@ -1,0 +1,22 @@
+# Terraform state and local working files (state contains the RCON password and GSLT)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local variable values, may hold secrets. Only the example is committed.
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Never commit keys or OCI CLI config
+*.pem
+*.key
+id_*
+.oci/

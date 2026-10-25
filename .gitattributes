@@ -1,0 +1,2 @@
+# Scripts and units run on Linux; never let Windows checkouts turn them into CRLF.
+* text=auto eol=lf

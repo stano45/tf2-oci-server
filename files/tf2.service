@@ -1,0 +1,18 @@
+[Unit]
+Description=TF2 dedicated server (x86-64 via FEX-Emu)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/tf2/server.env
+
+[Service]
+User=tf2
+Group=tf2
+EnvironmentFile=/etc/tf2/server.env
+WorkingDirectory=/home/tf2/tf2
+ExecStart=/usr/local/bin/tf2-start
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
