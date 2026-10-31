@@ -60,7 +60,7 @@ resource "oci_core_instance" "tf2" {
   }
 
   # Recreating a free A1 VM can fail on capacity, so newer images or edited first-boot
-  # scripts don't replace it. Use `terraform apply -replace=oci_core_instance.tf2` on purpose.
+  # scripts don't replace it. Use `tofu apply -replace=oci_core_instance.tf2` on purpose.
   lifecycle {
     ignore_changes = [
       source_details[0].source_id,

@@ -68,7 +68,7 @@ variable "ssh_public_key_path" {
 }
 
 variable "ssh_private_key_path" {
-  description = "Private key Terraform uses to push the server config over SSH."
+  description = "Private key OpenTofu uses to push the server config over SSH."
   type        = string
   default     = "~/.ssh/tf2_oci"
 }

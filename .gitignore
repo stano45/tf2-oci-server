@@ -1,4 +1,4 @@
-# Terraform state and local working files (state contains the RCON password and GSLT)
+# OpenTofu/Terraform state and local working files (state contains the RCON password and GSLT)
 .terraform/
 *.tfstate
 *.tfstate.*

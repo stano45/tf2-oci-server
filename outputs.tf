@@ -12,7 +12,7 @@ output "ssh" {
 }
 
 output "rcon_password" {
-  description = "Show with: terraform output -raw rcon_password"
+  description = "Show with: tofu output -raw rcon_password"
   value       = random_password.rcon.result
   sensitive   = true
 }

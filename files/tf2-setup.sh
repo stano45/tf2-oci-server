@@ -59,7 +59,7 @@ runuser -l tf2 -c 'mkdir -p ~/steamcmd && curl -fsSL https://steamcdn-a.akamaihd
 runuser -l tf2 -c '/usr/local/bin/tf2-update validate'
 runuser -l tf2 -c 'mkdir -p ~/.steam/sdk32 ~/.steam/sdk64 && ln -sf ~/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so && ln -sf ~/steamcmd/linux64/steamclient.so ~/.steam/sdk64/steamclient.so'
 
-# tf2.service is enabled by Terraform once it has pushed /etc/tf2/server.env.
+# tf2.service is enabled by OpenTofu once it has pushed /etc/tf2/server.env.
 mkdir -p /etc/tf2
 systemctl daemon-reload
 systemctl enable --now tf2-update.timer
