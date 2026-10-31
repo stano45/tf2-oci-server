@@ -111,13 +111,13 @@ variable "start_map" {
 }
 
 variable "map_cycle" {
-  description = "Maps to rotate through after each round's time limit. Empty uses TF2's default rotation."
+  description = "Maps to rotate through after each round's time limit; Workshop maps as workshop/<id>. Empty uses TF2's default rotation."
   type        = list(string)
   default     = []
 
   validation {
-    condition     = alltrue([for m in var.map_cycle : can(regex("^[A-Za-z0-9_]+$", m))])
-    error_message = "map_cycle entries must be plain map names like koth_viaduct_event."
+    condition     = alltrue([for m in var.map_cycle : can(regex("^([A-Za-z0-9_]+|workshop/[0-9]+)$", m))])
+    error_message = "map_cycle entries must be map names like koth_viaduct_event or Workshop maps like workshop/454118349."
   }
 }
 

@@ -49,6 +49,28 @@ Changing server settings (`hostname`, `server_password`, `start_map`, `map_cycle
 
 Without a token the server works through direct `connect`, but it won't appear in the public server list. Create one at <https://steamcommunity.com/dev/managegameservers> with app ID **440**, set `gslt` in `terraform.tfvars`, and apply.
 
+### Custom maps
+
+TF2 loads Steam Workshop maps natively: put `workshop/<id>` (the number from the map's Workshop URL) in `start_map` or `map_cycle`. The server downloads it and clients get it from the Workshop automatically.
+
+### Optional: SourceMod (admin commands and map voting)
+
+Off by default and self-contained in `sourcemod.tf`. Enable it in `terraform.tfvars`:
+
+```hcl
+sourcemod = {
+  enabled = true
+  admins  = ["[U:1:12345678]"]  # Steam IDs with full admin; `status` in the TF2 console shows yours
+}
+```
+
+This installs pinned, checksum-verified builds of MetaMod:Source and SourceMod 1.12 (both with 64-bit TF2 support) and keeps the server vanilla:
+
+- **On:** admin menu (`!admin`), kick/ban/map commands, admin votes, map voting (`rtv`, `nominate`, an end-of-map vote, `nextmap`), reserved slots
+- **Off:** `funcommands`, `funvotes`, `playercommands` (slap/slay) and `sounds`
+
+Setting `enabled = false` unloads it again and keeps SourceMod's files, bans and settings on disk. StAC (the community anti-cheat) isn't included: it needs extensions that only exist as 32-bit builds, and this server runs 64-bit TF2.
+
 ## Operating the server
 
 ```bash
