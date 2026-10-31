@@ -127,6 +127,28 @@ variable "max_players" {
   default     = 24
 }
 
+variable "bot_quota" {
+  description = "Fill the server with bots up to this many players; each joining human replaces a bot. 0 disables bots."
+  type        = number
+  default     = 0
+
+  validation {
+    condition     = var.bot_quota >= 0 && var.bot_quota <= 100
+    error_message = "bot_quota must be between 0 and 100 (and should stay below max_players)."
+  }
+}
+
+variable "bot_difficulty" {
+  description = "Bot skill: 0 easy, 1 normal, 2 hard, 3 expert."
+  type        = number
+  default     = 1
+
+  validation {
+    condition     = contains([0, 1, 2, 3], var.bot_difficulty)
+    error_message = "bot_difficulty must be 0, 1, 2 or 3."
+  }
+}
+
 variable "gslt" {
   description = "Steam Game Server Login Token (app ID 440). Needed for the public server list; empty works for direct connect."
   type        = string

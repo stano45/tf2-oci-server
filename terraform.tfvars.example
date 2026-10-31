@@ -7,6 +7,8 @@ hostname    = "TF2 on Oracle ARM"
 start_map   = "ctf_2fort"
 max_players = 24
 # map_cycle   = ["koth_viaduct_event", "koth_harvest_event", "cp_manor_event"]  # empty = TF2 default rotation
+# bot_quota      = 22  # fill with bots up to this many players; humans replace them. 0 = no bots
+# bot_difficulty = 1   # 0 easy, 1 normal, 2 hard, 3 expert
 # server_password = ""            # empty = public
 # admin_cidr      = "203.0.113.7/32"  # lock SSH/RCON to your IP
 

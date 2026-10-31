@@ -15,6 +15,8 @@ locals {
     rcon_password   = random_password.rcon.result
     server_password = var.server_password
     custom_cycle    = length(var.map_cycle) > 0
+    bot_quota       = var.bot_quota
+    bot_difficulty  = var.bot_difficulty
   })
 
   # Always non-empty: the file provisioner rejects empty content.
