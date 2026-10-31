@@ -14,7 +14,11 @@ locals {
     hostname        = var.hostname
     rcon_password   = random_password.rcon.result
     server_password = var.server_password
+    custom_cycle    = length(var.map_cycle) > 0
   })
+
+  # Always non-empty: the file provisioner rejects empty content.
+  map_cycle = length(var.map_cycle) > 0 ? join("", [for m in var.map_cycle : "${m}\n"]) : "// unused: map_cycle is empty\n"
 }
 
 # Waits for the first-boot install to finish, then pushes server settings and (re)starts
@@ -24,6 +28,7 @@ resource "terraform_data" "server_config" {
     oci_core_instance.tf2.id,
     sha256(local.server_env),
     sha256(local.server_cfg),
+    sha256(local.map_cycle),
   ]
 
   connection {
@@ -50,11 +55,17 @@ resource "terraform_data" "server_config" {
     destination = "/home/ubuntu/.tf2-server.cfg"
   }
 
+  provisioner "file" {
+    content     = local.map_cycle
+    destination = "/home/ubuntu/.tf2-mapcycle.txt"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo install -D -m 600 -o root -g root /home/ubuntu/.tf2-server.env /etc/tf2/server.env",
       "sudo install -m 640 -o tf2 -g tf2 /home/ubuntu/.tf2-server.cfg /home/tf2/tf2/tf/cfg/server.cfg",
-      "rm -f /home/ubuntu/.tf2-server.env /home/ubuntu/.tf2-server.cfg",
+      "sudo install -m 644 -o tf2 -g tf2 /home/ubuntu/.tf2-mapcycle.txt /home/tf2/tf2/tf/cfg/mapcycle_custom.txt",
+      "rm -f /home/ubuntu/.tf2-server.env /home/ubuntu/.tf2-server.cfg /home/ubuntu/.tf2-mapcycle.txt",
       "sudo systemctl enable tf2.service",
       "sudo systemctl restart tf2.service",
     ]

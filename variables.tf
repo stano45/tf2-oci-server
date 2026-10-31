@@ -110,6 +110,17 @@ variable "start_map" {
   default     = "ctf_2fort"
 }
 
+variable "map_cycle" {
+  description = "Maps to rotate through after each round's time limit. Empty uses TF2's default rotation."
+  type        = list(string)
+  default     = []
+
+  validation {
+    condition     = alltrue([for m in var.map_cycle : can(regex("^[A-Za-z0-9_]+$", m))])
+    error_message = "map_cycle entries must be plain map names like koth_viaduct_event."
+  }
+}
+
 variable "max_players" {
   description = "Player slots. 24 is a comfortable limit under x86 emulation on 4 A1 cores."
   type        = number

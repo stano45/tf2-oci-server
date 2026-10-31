@@ -7,3 +7,6 @@ sv_allowupload 0
 sv_allowdownload 1
 mp_timelimit 30
 log on
+%{ if custom_cycle ~}
+mapcyclefile "mapcycle_custom.txt"
+%{ endif ~}

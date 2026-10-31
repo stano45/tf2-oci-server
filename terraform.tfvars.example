@@ -6,6 +6,7 @@ tenancy_ocid = "ocid1.tenancy.oc1..aaaa..."
 hostname    = "TF2 on Oracle ARM"
 start_map   = "ctf_2fort"
 max_players = 24
+# map_cycle   = ["koth_viaduct_event", "koth_harvest_event", "cp_manor_event"]  # empty = TF2 default rotation
 # server_password = ""            # empty = public
 # admin_cidr      = "203.0.113.7/32"  # lock SSH/RCON to your IP
 

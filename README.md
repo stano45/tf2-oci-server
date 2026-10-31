@@ -43,7 +43,7 @@ tofu output -raw rcon_password
 
 With `server_password` set, join with `password <your password>; connect <ip>:27015`, or connect and enter it at the prompt. The TF2 client remembers the last password for the session; run `password ""` to test the prompt.
 
-Changing server settings (`hostname`, `server_password`, `start_map`, `max_players`, `gslt`) and re-running `tofu apply` pushes the new config and restarts the server. The VM itself is not replaced.
+Changing server settings (`hostname`, `server_password`, `start_map`, `map_cycle`, `max_players`, `gslt`) and re-running `tofu apply` pushes the new config and restarts the server. The VM itself is not replaced.
 
 ### Steam server token (GSLT)
 
