@@ -68,3 +68,7 @@ sudo less /var/log/tf2-setup.log                # first-boot install log
 - **Two firewalls.** Ports need to be open both in the VCN security list and in the VM's iptables. Both are handled here; keep that in mind when adding ports.
 - **Why FEXBash.** Valve's `steamcmd.sh` and `srcds_run_64` check `uname -m` and look for native arm64 builds on an ARM shell, so both run inside FEX's emulated bash, where they see x86_64.
 - **Empty server browser.** If the in-game or Steam server browser shows no servers at all, that's the client, not this server: try Steam → Settings → In Game → "In-game server browser: Max pings / minute" = 500. `Favorites → Add a server` with the IP always works.
+
+## License
+
+[MIT](LICENSE)
